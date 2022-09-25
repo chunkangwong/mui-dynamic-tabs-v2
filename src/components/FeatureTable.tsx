@@ -8,22 +8,19 @@ interface FeatureTable {
   featureLayer: FeatureLayer;
 }
 
-const featureTable = new EsriFeatureTable();
-
 export default function FeatureTable({ featureLayer }: FeatureTable) {
   const view = useSelector((state: RootState) => state.arcgis.view);
   const tableRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     view.when(() => {
-      featureTable.view = view;
-      featureTable.container = tableRef.current as HTMLDivElement;
-      featureTable.layer = featureLayer;
+      new EsriFeatureTable({
+        view,
+        layer: featureLayer,
+        container: tableRef.current as HTMLDivElement,
+      });
     });
-    return () => {
-      featureTable.destroy();
-    };
-  }, [view]);
+  }, [view, featureLayer]);
 
   return (
     <div
