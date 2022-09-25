@@ -20,7 +20,7 @@ export default function Results({}: ResultsProps) {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", height: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <MuiTabs value={activeResult} onChange={handleChange}>
           {results.map((result, index) => (

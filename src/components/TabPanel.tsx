@@ -19,7 +19,7 @@ export default function TabPanel({
       role="tabpanel"
       hidden={value !== index}
       style={{
-        padding: "1rem",
+        height: "100%",
       }}
       {...other}
       ref={ref}

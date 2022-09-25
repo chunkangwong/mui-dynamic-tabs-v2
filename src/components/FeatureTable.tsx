@@ -23,6 +23,12 @@ export default function FeatureTable({ featureLayer }: FeatureTable) {
     });
   }, [view, featureLayer]);
 
+  useEffect(() => {
+    return () => {
+      featureTable.destroy();
+    };
+  }, [view]);
+
   return (
     <div
       ref={tableRef}
