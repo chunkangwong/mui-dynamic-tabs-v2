@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import "./App.css";
 import MapContainer from "./features/arcgis/MapContainer";
 import Results from "./features/results/Results";

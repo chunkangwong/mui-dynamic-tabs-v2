@@ -1,11 +1,12 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ReactNode } from "react";
 import { RootState } from "../../store/store";
 
 type Label = string;
 
 interface ResultState {
   label: Label;
-  content: string;
+  content: ReactNode;
 }
 
 const initialState = {

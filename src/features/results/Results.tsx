@@ -20,7 +20,7 @@ export default function Results({}: ResultsProps) {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", height: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <MuiTabs value={activeResult} onChange={handleChange}>
           {results.map((result, index) => (
@@ -29,18 +29,13 @@ export default function Results({}: ResultsProps) {
         </MuiTabs>
       </Box>
       {results.map((result, index) => {
-        const ResultComponent = React.lazy(
-          () => import(`../../components/${result.content}.tsx`)
-        );
         return (
           <TabPanel
             index={index}
             value={activeResult}
-            key={`tabpanel-${index}`}
+            key={`tabpanel-${Math.random()}`}
           >
-            <React.Suspense fallback={<div>Loading...</div>}>
-              <ResultComponent />
-            </React.Suspense>
+            {result.content}
           </TabPanel>
         );
       })}

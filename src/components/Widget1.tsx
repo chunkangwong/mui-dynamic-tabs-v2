@@ -1,3 +1,4 @@
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -7,8 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addResult,
   selectResultByLabel,
+  updateResult,
 } from "../features/results/resultsSlice";
 import { AppDispatch, RootState } from "../store/store";
+import FeatureTable from "./FeatureTable";
+import WidgetResult1 from "./WidgetResult1";
 
 interface Widget1Props {}
 
@@ -27,10 +31,25 @@ export default function Widget1({}: Widget1Props) {
 
   function handleSearch() {
     if (!activeResult) {
+      const featureLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/US_National_Parks_Annual_Visitation/FeatureServer/0",
+        outFields: ["*"],
+      });
       dispatch(
         addResult({
           label: WIDGET_LABEL,
-          content: "WidgetResult1",
+          content: <FeatureTable featureLayer={featureLayer} />,
+        })
+      );
+    } else {
+      const featureLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Hazards_Uptown_Charlotte/FeatureServer/0",
+        outFields: ["*"],
+      });
+      dispatch(
+        updateResult({
+          label: WIDGET_LABEL,
+          content: <FeatureTable featureLayer={featureLayer} />,
         })
       );
     }
