@@ -39,7 +39,7 @@ export default function Results({}: ResultsProps) {
             key={`tabpanel-${index}`}
           >
             <React.Suspense fallback={<div>Loading...</div>}>
-              <ResultComponent />
+              <ResultComponent {...result.contentState} />
             </React.Suspense>
           </TabPanel>
         );

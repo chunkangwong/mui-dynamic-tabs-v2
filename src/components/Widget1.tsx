@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addResult,
   selectResultByLabel,
+  updateResult,
 } from "../features/results/resultsSlice";
 import { AppDispatch, RootState } from "../store/store";
 
@@ -31,6 +32,14 @@ export default function Widget1({}: Widget1Props) {
         addResult({
           label: WIDGET_LABEL,
           content: "WidgetResult1",
+          contentState: { label: value },
+        })
+      );
+    } else {
+      dispatch(
+        updateResult({
+          label: WIDGET_LABEL,
+          contentState: { label: value },
         })
       );
     }

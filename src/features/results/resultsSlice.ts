@@ -6,6 +6,7 @@ type Label = string;
 interface ResultState {
   label: Label;
   content: string;
+  contentState?: object;
 }
 
 const initialState = {
@@ -34,10 +35,16 @@ export const createResultsSlice = (tabsState: typeof initialState) =>
         );
         state.activeResult = state.results.length - 1;
       },
-      updateResult(state, action: PayloadAction<ResultState>) {
+      updateResult(
+        state,
+        action: PayloadAction<{
+          label: Label;
+          contentState: object;
+        }>
+      ) {
         state.results.forEach((result) => {
           if (result.label === action.payload.label) {
-            result.content = action.payload.content;
+            result.contentState = action.payload.contentState;
           }
         });
       },

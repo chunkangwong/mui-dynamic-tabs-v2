@@ -1,5 +1,11 @@
-interface WidgetResult2Props {}
-
-export default function WidgetResult2({}: WidgetResult2Props) {
-  return <h1>Widget Result 2</h1>;
+interface WidgetResult2Props {
+  label: string;
 }
+
+export default function WidgetResult2({ label }: WidgetResult2Props) {
+  return <h1>{label}</h1>;
+}
+
+WidgetResult2.defaultProps = {
+  label: "WidgetResult2",
+};
