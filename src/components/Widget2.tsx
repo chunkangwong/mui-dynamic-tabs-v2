@@ -30,7 +30,7 @@ export default function Widget2({}: Widget2Props) {
       dispatch(
         addResult({
           label: WIDGET_LABEL,
-          content: "WidgetResult1",
+          content: "WidgetResult2",
         })
       );
     }
