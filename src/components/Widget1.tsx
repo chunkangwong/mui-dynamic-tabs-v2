@@ -1,3 +1,4 @@
+import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -28,18 +29,26 @@ export default function Widget1({}: Widget1Props) {
 
   function handleSearch() {
     if (!activeResult) {
+      const featureLayer = new FeatureLayer({
+        url: "https://services2.arcgis.com/GrCObcYo81O3Ymu8/arcgis/rest/services/HDB_Car_Park_Location/FeatureServer/0",
+        outFields: ["*"],
+      });
       dispatch(
         addResult({
           label: WIDGET_LABEL,
-          content: "WidgetResult1",
-          contentState: { label: value },
+          content: "FeatureTable",
+          contentState: { featureLayer: featureLayer },
         })
       );
     } else {
+      const featureLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/Hazards_Uptown_Charlotte/FeatureServer/0",
+        outFields: ["*"],
+      });
       dispatch(
         updateResult({
           label: WIDGET_LABEL,
-          contentState: { label: value },
+          contentState: { featureLayer: featureLayer },
         })
       );
     }
