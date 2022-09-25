@@ -6,7 +6,11 @@ interface WidgetsProps {}
 
 export default function Widgets({}: WidgetsProps) {
   return (
-    <Stack>
+    <Stack
+      sx={{
+        width: "100%",
+      }}
+    >
       <WidgetMenu />
       <WidgetTabs />
     </Stack>

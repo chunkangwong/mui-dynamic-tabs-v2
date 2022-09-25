@@ -22,9 +22,14 @@ function App() {
           <MapContainer />
           <Results />
         </div>
-        <Stack>
+        <div
+          style={{
+            borderLeft: "1px solid #ccc",
+            width: "30%",
+          }}
+        >
           <Widgets />
-        </Stack>
+        </div>
       </Stack>
     </div>
   );
