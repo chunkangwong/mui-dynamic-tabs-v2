@@ -29,13 +29,18 @@ export default function Results({}: ResultsProps) {
         </MuiTabs>
       </Box>
       {results.map((result, index) => {
+        const ResultComponent = React.lazy(
+          () => import(`../../components/${result.content}.tsx`)
+        );
         return (
           <TabPanel
             index={index}
             value={activeResult}
             key={`tabpanel-${index}`}
           >
-            {result.content}
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <ResultComponent />
+            </React.Suspense>
           </TabPanel>
         );
       })}
